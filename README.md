@@ -2,12 +2,18 @@
 
 ### Dimensionnement selon les charges (Pods) :
 
-| Nombre de Pods   | Nombre de Nœuds Serveurs (Control Plane)   | Nombre de Nœuds Agents   |
-|:-----------------|:-------------------------------------------|:-------------------------|
-| 50 Pods          | 1 serveur                                  | 1 à 2 nœuds agents       |
-| 250 Pods         | 3 serveurs                                 | 3 à 5 nœuds agents       |
-| 500 Pods         | 3 serveurs                                 | 5 à 10 nœuds agents      |
-| 1000+ Pods       | 3 à 5 serveurs                             | 10+ nœuds agents         |
+| Nombre de Pods   | Nombre de Nœuds Serveurs (Control Plane)   | Nombre de Nœuds Agents   | Commandes de Lancement (Serveurs et Agents) |
+|:-----------------|:-------------------------------------------|:-------------------------|:--------------------------------------------|
+| 50 Pods          | 1 serveur                                  | 1 à 2 nœuds agents       | `k3d cluster create mycluster --servers 1 --agents 2 --server-arg --kube-apiserver-arg=enable-admission-plugins=ResourceQuota --agent-create-args='--memory=1g --cpus=1'` |
+| 250 Pods         | 3 serveurs                                 | 3 à 5 nœuds agents       | `k3d cluster create mycluster --servers 3 --agents 5 --server-arg --kube-apiserver-arg=enable-admission-plugins=ResourceQuota --agent-create-args='--memory=2g --cpus=2'` |
+| 500 Pods         | 3 serveurs                                 | 5 à 10 nœuds agents      | `k3d cluster create mycluster --servers 3 --agents 10 --server-arg --kube-apiserver-arg=enable-admission-plugins=ResourceQuota --agent-create-args='--memory=4g --cpus=2'` |
+| 1000+ Pods       | 3 à 5 serveurs                             | 10+ nœuds agents         | `k3d cluster create mycluster --servers 5 --agents 10 --server-arg --kube-apiserver-arg=enable-admission-plugins=ResourceQuota --agent-create-args='--memory=4g --cpus=4'` |
+
+### Explication
+
+- **Serveurs** : Les nœuds serveurs (control plane) gèrent les composants principaux de Kubernetes (API server, scheduler, controller manager, etc.).
+- **Agents** : Les nœuds agents sont responsables de l'exécution des pods et de la gestion des workloads.
+- **Limites CPU et Mémoire** : Les valeurs optimales sont définies pour limiter l'impact sur la machine hôte tout en offrant suffisamment de ressources pour les charges de travail.
 
 ### commandes essentielles
 
