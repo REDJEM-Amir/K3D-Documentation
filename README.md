@@ -15,17 +15,30 @@
 - **Agents** : Les nœuds agents sont responsables de l'exécution des pods et de la gestion des workloads.
 - **Limites CPU et Mémoire** : Les valeurs optimales sont définies pour limiter l'impact sur la machine hôte tout en offrant suffisamment de ressources pour les charges de travail.
 
-### commandes essentielles
+### Commandes k3d
 
-| Commande                                      | Description                                                                                       |
-|:----------------------------------------------|:--------------------------------------------------------------------------------------------------|
-| `k3d cluster create mycluster`                | Crée un cluster Kubernetes nommé `mycluster` avec 1 serveur et 1 nœud agent.                      |
-| `k3d cluster delete mycluster`                | Supprime le cluster `mycluster`.                                                                  |
-| `k3d cluster stop mycluster`                  | Arrête le cluster `mycluster`.                                                                    |
-| `kubectl get nodes`                           | Affiche la liste des nœuds dans le cluster.                                                       |
-| `kubectl get pods`                            | Affiche la liste des pods dans le cluster Kubernetes.                                              |
-| `k3d cluster start mycluster`                 | Démarre le cluster `mycluster` s'il a été arrêté.                                                 |
-| `k3d node create mynode --role agent`         | Ajoute un nouveau nœud agent nommé `mynode` au cluster existant.                                  |
-| `k3d node delete mynode`                      | Supprime le nœud nommé `mynode` du cluster.                                                       |
-| `kubectl expose deployment myapp --port=80`   | Expose un service Kubernetes pour l'application `myapp` sur le port 80.                           |
-| `kubectl apply -f mydeployment.yaml`          | Applique une configuration Kubernetes à partir d'un fichier YAML.                                 |
+| Commande                                      | Description                                      |
+|:-------------------------------|:-------------------------------------------------|
+| `k3d cluster start mycluster`  | Démarre le cluster `mycluster` s'il a été arrêté |
+| `k3d cluster stop mycluster`   | Arrête le cluster `mycluster`.                   |
+| `k3d cluster delete mycluster` | Supprime le cluster `mycluster`.                 |
+
+### Commandes info
+
+| Commande                              | Description                                    |
+|:--------------------------------------|:-----------------------------------------------|
+| `kubectl get svc --namespace default` | Affiche les services dans le namespace default |
+| `kubectl get nodes`                   | Affiche la liste des nœuds du cluster          |
+| `kubectl get pods`                    | Affiche la liste des pods                      |
+| `kubectl logs <name-pod>`             | Affiche les logs du pod spécifié               |
+| `kubectl describe pod <name-pod>`     | Donne des détails complets sur le pod spécifié |
+
+### Commandes delete
+
+| Commande                                                | Description                                                                     |
+|:--------------------------------------------------------|:--------------------------------------------------------------------------------|
+| `kubectl delete svc <name-service> --namespace default` | Supprime le service spécifié dans le namespace default                          |
+| `kubectl delete deployment <name-deployment>`           | Supprime le déploiement spécifié                                                |
+| `kubectl delete secret <name-secret> --ignore-not-found`| Supprime le secret spécifié, en ignorant l'erreur si le secret n'est pas trouvé |
+| `kubectl delete pod <name-pod>`                         | Supprime le pod spécifié                                                        |
+
