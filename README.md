@@ -30,6 +30,7 @@
 | `kubectl get svc --namespace default`                          | Affiche les services dans le namespace default |
 | `kubectl get nodes`                                            | Affiche la liste des nœuds du cluster          |
 | `kubectl get pods`                                             | Affiche la liste des pods                      |
+| `kubectl get pvc`                                              | Affiche la liste des volumes                   |
 | `kubectl logs <name-pod>`                                      | Affiche les logs du pod spécifié               |
 | `kubectl describe pod <name-pod>`                              | Donne des détails complets sur le pod spécifié |
 | `kubectl get secret --namespace default`                       | Affiche les secrets enregistré                 |
