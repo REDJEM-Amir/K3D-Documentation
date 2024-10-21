@@ -4,10 +4,10 @@
 
 | Nombre de Pods   | Nombre de Nœuds Serveurs (Control Plane)   | Nombre de Nœuds Agents   | Commandes de Lancement (Serveurs et Agents) |
 |:-----------------|:-------------------------------------------|:-------------------------|:--------------------------------------------|
-| 50 Pods          | 1 serveur                                  | 1 à 2 nœuds agents       | `k3d cluster create mycluster --servers 1 --agents 2 --k3s-arg "--kube-apiserver-arg=enable-admission-plugins=ResourceQuota@server:0" --agents-memory 1g --servers-memory 1g` |
-| 250 Pods         | 3 serveurs                                 | 3 à 5 nœuds agents       | `k3d cluster create mycluster --servers 3 --agents 5 --k3s-arg "--kube-apiserver-arg=enable-admission-plugins=ResourceQuota@server:0" --agents-memory 2g --servers-memory 2g` |
-| 500 Pods         | 3 serveurs                                 | 5 à 10 nœuds agents      | `k3d cluster create mycluster --servers 3 --agents 10 --k3s-arg "--kube-apiserver-arg=enable-admission-plugins=ResourceQuota@server:0" --agents-memory 4g --servers-memory 4g` |
-| 1000+ Pods       | 3 à 5 serveurs                             | 10+ nœuds agents         | `k3d cluster create mycluster --servers 5 --agents 10 --k3s-arg "--kube-apiserver-arg=enable-admission-plugins=ResourceQuota@server:0" --agents-memory 4g --servers-memory 4g` |
+| 50 Pods          | 1 serveur                                  | 1 à 2 nœuds agents       | `k3d cluster create mycluster --servers 1 --agents 2 --k3s-arg "--kube-apiserver-arg=enable-admission-plugins=ResourceQuota@server:0" --agents-memory 1g --servers-memory 1g --port "127.0.0.1:8080:80@loadbalancer"` |
+| 250 Pods         | 3 serveurs                                 | 3 à 5 nœuds agents       | `k3d cluster create mycluster --servers 3 --agents 5 --k3s-arg "--kube-apiserver-arg=enable-admission-plugins=ResourceQuota@server:0" --agents-memory 2g --servers-memory 2g --port "127.0.0.1:8080:80@loadbalancer"` |
+| 500 Pods         | 3 serveurs                                 | 5 à 10 nœuds agents      | `k3d cluster create mycluster --servers 3 --agents 10 --k3s-arg "--kube-apiserver-arg=enable-admission-plugins=ResourceQuota@server:0" --agents-memory 4g --servers-memory 4g --port "127.0.0.1:8080:80@loadbalancer"` |
+| 1000+ Pods       | 3 à 5 serveurs                             | 10+ nœuds agents         | `k3d cluster create mycluster --servers 5 --agents 10 --k3s-arg "--kube-apiserver-arg=enable-admission-plugins=ResourceQuota@server:0" --agents-memory 4g --servers-memory 4g --port "127.0.0.1:8080:80@loadbalancer"` |
 
 ### Explication
 
